@@ -2,6 +2,7 @@ package com.example.sandbox
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 import kotlin.properties.Delegates
@@ -42,5 +43,19 @@ class MainActivity(
         builder.invoke()
 
         inlinedFunction() // <-- print("Hello World")
+
+        val intent = intentFor<HomeWork>()
+
+        MyThread().run()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
     }
 }
