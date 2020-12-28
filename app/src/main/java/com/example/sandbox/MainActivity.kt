@@ -15,7 +15,7 @@ import kotlin.reflect.KProperty
 
 class MainActivity : AppCompatActivity() {
 
-    private val simpleItemAdapter = SimpleItemAdapter(::onCheckChanged)
+    private val simpleItemAdapter = SimpleListAdapter(::onCheckChanged)
 
     private val list = mutableListOf(
         SomeData("Hello"),
@@ -196,14 +196,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val listView = findViewById<RecyclerView>(R.id.list_view)
-        listView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        listView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         listView.adapter = simpleItemAdapter
         listView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
-        simpleItemAdapter.list = list
+        simpleItemAdapter.submitList(list)
         Handler().postDelayed(
             {
-                list.drop(1)
-                simpleItemAdapter.notifyDataSetChanged()
+                val newList = list.drop(50).map { element -> element.copy(checked = true) }
+                simpleItemAdapter.submitList(newList)
             }, 3000)
     }
 }

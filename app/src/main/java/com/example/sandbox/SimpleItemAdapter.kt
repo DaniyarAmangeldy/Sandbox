@@ -27,6 +27,12 @@ class SimpleItemAdapter(
         holder.bind(list[position])
     }
 
+//    override fun onBindViewHolder(holder: SimpleViewHolder, position: Int, payloads: MutableList<Any>) {
+//        super.onBindViewHolder(holder, position, payloads)
+//        if (payloads.isEmpty()) return
+//        holder.bindPayload(payloads.first() as String)
+//    }
+
     override fun onViewRecycled(holder: SimpleViewHolder) {
         holder.unbind()
         super.onViewRecycled(holder)
@@ -50,6 +56,10 @@ class SimpleViewHolder(
         itemView.findViewById<CheckBox>(R.id.name).isChecked = name.checked
     }
 
+    fun bindPayload(checked: Boolean) {
+        itemView.findViewById<CheckBox>(R.id.name).isChecked = checked
+    }
+
     fun unbind() {
         itemView.findViewById<CheckBox>(R.id.name).isChecked = false
         itemView.findViewById<TextView>(R.id.name).text = null
@@ -58,5 +68,6 @@ class SimpleViewHolder(
 
 data class SomeData(
     val name: String,
-    var checked: Boolean = false
+    var checked: Boolean = false,
+    val id: Int = 0
 )
