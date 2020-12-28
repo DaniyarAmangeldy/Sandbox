@@ -42,8 +42,9 @@ class AnimationSample: AppCompatActivity() {
         imageView.animate()
             .alpha(1F)
             .setDuration(200)
+            .start()
 
-        AnimatorSet().playSequentially(
+        AnimatorSet().playTogether(
             animatorOne,
             animatorOne,
             animatorOne
