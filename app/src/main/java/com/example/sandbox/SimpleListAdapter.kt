@@ -6,12 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 
 class SimpleListAdapter(
-    val onCheckChanged: (position: Int, checked: Boolean) -> Unit
 ): ListAdapter<SomeData, SimpleViewHolder>(SimpleDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleViewHolder {
         return SimpleViewHolder(
-            onCheckChanged,
             LayoutInflater.from(parent.context).inflate(R.layout.item_sample, parent, false))
     }
 

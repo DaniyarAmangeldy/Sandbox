@@ -18,9 +18,7 @@ class SimpleItemAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleViewHolder {
-        return SimpleViewHolder(
-            onCheckChanged,
-            LayoutInflater.from(parent.context).inflate(R.layout.item_sample, parent, false))
+        return SimpleViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_sample, parent, false))
     }
 
     override fun onBindViewHolder(holder: SimpleViewHolder, position: Int) {
@@ -41,14 +39,10 @@ class SimpleItemAdapter(
     override fun getItemCount(): Int = list.size
 }
 
-class SimpleViewHolder(
-    val onCheckChanged: (position: Int, checked: Boolean) -> Unit,
-    view: View): RecyclerView.ViewHolder(view) {
+class SimpleViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     init {
-        itemView.findViewById<CheckBox>(R.id.name).setOnCheckedChangeListener { buttonView, isChecked ->
-            onCheckChanged.invoke(adapterPosition, !isChecked)
-        }
+        itemView.findViewById<CheckBox>(R.id.name).setOnCheckedChangeListener { buttonView, isChecked -> }
     }
 
     fun bind(name: SomeData) {

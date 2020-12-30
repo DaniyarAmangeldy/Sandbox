@@ -14,16 +14,38 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
 
-        <activity android:name=".AnimationSample">
+        <activity
+            android:name=".AnimationSample"
+            android:launchMode="singleInstance"
+            android:exported="true"
+            >
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="forte.kz"
+                    android:pathPrefix="/banking"
+                    android:scheme="https" />
+            </intent-filter>
+
         </activity>
         <activity android:name=".ConstraintLayoutAnimationSample" >
 
         </activity>
+        <activity android:name=".FragmentsSampleActivity" />
     </application>
 
 </manifest>
